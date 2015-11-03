@@ -1,0 +1,1 @@
+web: gunicorn offcampus.wsgi --log-file -
