@@ -1,2 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% if user.is_authenticated %}
+<div class="address-bar">Welcome Back!</div>
+{% endif %}
