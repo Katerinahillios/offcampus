@@ -25,6 +25,13 @@ class PlaceDetailView(DetailView):
   model = Place
   template_name = 'place/place_detail.html'
 
+  def get_context_data(self, **kwargs):
+    context = super(PlaceDetailView, self).get_context_data(**kwargs)
+    place = Place.objects.get(id=self.kwargs['pk'])
+    comments = Comment.objects.filter(place=place)
+    context['comments'] = comments
+    return context
+
 class PlaceUpdateView(UpdateView):
   model = Place
   template_name = 'place/place_form.html'
@@ -34,6 +41,7 @@ class PlaceDeleteView(DeleteView):
   model = Place
   template_name = 'place/place_confirm_delete.html'
   success_url = reverse_lazy('place_list')
+  
 
 class CommentCreateView(CreateView):
   model = Comment
