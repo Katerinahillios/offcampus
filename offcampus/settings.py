@@ -26,7 +26,7 @@ SECRET_KEY = '1@#5=80l1ib74=#!fk_zp7yow!bb$vubg-+u55oj%^+n3!yy9h'
 # SECURITY WARNING: don't run with debug turned on in production!
 if ON_HEROKU == True:
     DEBUG = False
-else:    
+else:
     DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -94,7 +94,7 @@ else:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    ALLOWED_HOSTS = ['*']    
+    ALLOWED_HOSTS = ['*']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -118,5 +118,5 @@ STATICFILES_DIRS = (os.path.join(MAIN_DIR, 'static'),)
 STATIC_ROOT = 'staticfiles'
 
 LOGIN_URL = '/user/login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/place/'
 SITE_ID = 1

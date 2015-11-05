@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for place in object_list %}
+<div class="panel">
+  <h3>{{ place.place }}</h3>
+  <p>Submitted by {{ place.user.username }} on {{ place.created_at }}</p>
+</div>
+{% endfor %}
+{% endblock %}
