@@ -41,7 +41,7 @@ class PlaceDeleteView(DeleteView):
   model = Place
   template_name = 'place/place_confirm_delete.html'
   success_url = reverse_lazy('place_list')
-  
+
 
 class CommentCreateView(CreateView):
   model = Comment
@@ -55,3 +55,12 @@ class CommentCreateView(CreateView):
     form.instance.user = self.request.user
     form.instance.place = Place.objects.get(id=self.kwargs['pk'])
     return super(CommentCreateView, self).form_valid(form)
+
+class CommentUpdateView(UpdateView):
+  model = Comment
+  pk_url_kwarg = 'comment_pk'
+  template_name = 'comment/comment_form.html'
+  fields = ['text']
+
+  def get_success_url(self):
+    return self.object.place.get_absolute_url()
