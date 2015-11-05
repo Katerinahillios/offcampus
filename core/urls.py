@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     url(r'^user/', include('django.contrib.auth.urls')),
     url(r'^place/create/$', PlaceCreateView.as_view(), name='place_create'), 
     url(r'^place/$', PlaceListView.as_view(), name='place_list'),    
-    url(r'^place/(?P<pk>\d+)/$', PlaceDetailView.as_view(), name='place_detail'),                   
+    url(r'^place/(?P<pk>\d+)/$', PlaceDetailView.as_view(), name='place_detail'),
+    url(r'^place/update/(?P<pk>\d+)/$', PlaceUpdateView.as_view(), name='place_update'),                   
 )

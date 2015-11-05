@@ -3,4 +3,7 @@
 <h1>{{ place.place }}</h1>
 <p>{{ place.description }}</p>
 <p>Submitted by {{ place.user.username }} on {{ place.created_at }}</p>
+{% if place.user == user %}
+<p><a href="{% url 'place_update' pk=place.id %}">Edit Place</a></p>
+{% endif %}
 {% endblock %}
