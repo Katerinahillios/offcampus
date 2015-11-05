@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ place.place }}</h1>
+<p>{{ place.description }}</p>
+<p>Submitted by {{ place.user.username }} on {{ place.created_at }}</p>
+{% endblock %}

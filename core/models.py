@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 category_options = (
 (0, 'Select...'),
@@ -22,5 +23,8 @@ class Place(models.Model):
 
   def __unicode__(self):
     return self.place
+  
+  def get_absolute_url(self):
+    return reverse("place_detail", args=[self.id])
 
 
