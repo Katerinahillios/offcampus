@@ -37,7 +37,7 @@ class PlaceDeleteView(DeleteView):
 
 class CommentCreateView(CreateView):
   model = Comment
-  template_name = "comment/comment_form.html"
+  template_name = 'comment/comment_form.html'
   fields = ['text']
 
   def get_success_url(self):
