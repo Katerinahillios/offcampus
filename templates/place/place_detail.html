@@ -7,4 +7,5 @@
 <p><a href="{% url 'place_update' pk=place.id %}">Edit Place</a></p>
 <p><a href="{% url 'place_delete' pk=place.id %}">Delete Place</a></p>
 {% endif %}
+<p><a href="{% url 'comment_create' pk=place.id %}">Add A Comment!</a></p>
 {% endblock %}
