@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^place/update/(?P<pk>\d+)/$', PlaceUpdateView.as_view(), name='place_update'),  
     url(r'^place/delete/(?P<pk>\d+)/$', PlaceDeleteView.as_view(), name='place_delete'),    
     url(r'^place/(?P<pk>\d+)/comment/create/$', CommentCreateView.as_view(), name='comment_create'),
-    url(r'^place/(?P<place_pk>\d+)/comment/update/(?P<comment_pk>\d+)/$', CommentUpdateView.as_view(), name='comment_update'),                          
+    url(r'^place/(?P<place_pk>\d+)/comment/update/(?P<comment_pk>\d+)/$', CommentUpdateView.as_view(), name='comment_update'),
+    url(r'^place/(?P<place_pk>\d+)/comment/delete/(?P<comment_pk>\d+)/$', CommentDeleteView.as_view(), name='comment_delete'),                 
 )
