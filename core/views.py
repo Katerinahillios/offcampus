@@ -23,6 +23,7 @@ class PlaceCreateView(CreateView):
 class PlaceListView(ListView):
   model = Place
   template_name = 'place/place_list.html'
+  paginate_by = 5
 
 class PlaceDetailView(DetailView):
   model = Place
