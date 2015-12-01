@@ -32,9 +32,9 @@ class PlaceDetailView(DetailView):
     place = Place.objects.get(id=self.kwargs['pk'])
     comments = Comment.objects.filter(place=place)
     context['comments'] = comments
-    return context
     rating = Comment.objects.filter(place=place).aggregate(Avg('rating'))
     context['rating'] = rating
+    return context
 
 class PlaceUpdateView(UpdateView):
   model = Place
@@ -61,7 +61,7 @@ class PlaceDeleteView(DeleteView):
 class CommentCreateView(CreateView):
   model = Comment
   template_name = 'comment/comment_form.html'
-  fields = ['text', 'visibility', 'rating']
+  fields = ['text', 'rating']
 
   def get_success_url(self):
     return self.object.place.get_absolute_url()
@@ -75,7 +75,7 @@ class CommentUpdateView(UpdateView):
   model = Comment
   pk_url_kwarg = 'comment_pk'
   template_name = 'comment/comment_form.html'
-  fields = ['text', 'visibility', 'rating']
+  fields = ['text', 'rating']
 
   def get_success_url(self):
     return self.object.place.get_absolute_url()
