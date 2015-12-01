@@ -13,7 +13,7 @@ class Home(TemplateView):
 class PlaceCreateView(CreateView):
   model = Place
   template_name = 'place/place_form.html'
-  fields = ['category', 'place', 'description']
+  fields = ['category', 'place', 'description', 'rating']
   success_url = reverse_lazy('place_list')
 
   def form_valid(self, form):
@@ -34,13 +34,14 @@ class PlaceDetailView(DetailView):
     comments = Comment.objects.filter(place=place)
     context['comments'] = comments
     rating = Comment.objects.filter(place=place).aggregate(Avg('rating'))
+    rating = Place.objects.filter(place=place).aggregate(Avg('rating'))
     context['rating'] = rating
     return context
 
 class PlaceUpdateView(UpdateView):
   model = Place
   template_name = 'place/place_form.html'
-  fields = ['category', 'place', 'description']
+  fields = ['category', 'place', 'description', 'rating']
 
   def get_object(self, *args, **kwargs):
     object = super(PlaceUpdateView, self).get_object(*args, **kwargs)
@@ -114,9 +115,18 @@ class VoteFormView(FormView):
     else:
       prev_votes[0].delete()
     return redirect(reverse('place_detail', args=[form.data["place"]]))
-  
+
 class UserDetailView(DetailView):
   model = User
   slug_field = 'username'
   template_name = 'user/user_detail.html'
   context_object_name = 'user_in_view'
+
+  def get_context_data(self, **kwargs):
+    context = super(UserDetailView, self).get_context_data(**kwargs)
+    user_in_view = User.objects.get(username=self.kwargs['slug'])
+    places = Place.objects.filter(user=user_in_view)
+    context['places'] = places
+    comments = Comment.objects.filter(user=user_in_view)
+    context['comments'] = comments
+    return context

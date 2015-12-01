@@ -3,7 +3,7 @@
 {% for place in object_list %}
 <div class="panel">
   <h3><a href="{{ place.get_absolute_url }}">{{ place.place }}</a></h3>
-  <p>Submitted by {{ place.user.username }} on {{ place.created_at }}</p>
+  <p>Submitted by <a href="{% url 'user_detail' slug=place.user.username %}">{{ place.user.username }}</a> on {{ place.created_at }}</p>
 </div>
 {% endfor %}
 {% endblock %}

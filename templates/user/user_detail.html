@@ -4,4 +4,13 @@
 <p>Email address: {{ user_in_view.email }}</p>
 <p>First name: {{ user_in_view.first_name }}</p>
 <p>Last name: {{ user_in_view.last_name }}</p>
+<h3>Places ({{ places.count }})</h3>
+{% for place in places %}
+    <p><a href="{{ place.get_absolute_url }}">{{ place.place }}</a></p>
+{% endfor %}
+<h3>Comments ({{ comments.count }})</h3>
+{% for comment in comments %}
+    <p><a href="{{ comment.place.get_absolute_url }}">{{ comment.place.place }}</a></p>
+<p>> {{ comment.text }}</p>
+{% endfor %}
 {% endblock %}

@@ -29,7 +29,8 @@ class Place(models.Model):
   description = models.TextField(null=True, blank=True, default="")
   created_at = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User)
-
+  rating = models.IntegerField(choices=RATING_CHOICES, default=0)  
+  
   def __unicode__(self):
     return self.place
 
