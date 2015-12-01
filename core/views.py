@@ -25,6 +25,14 @@ class PlaceListView(ListView):
   template_name = 'place/place_list.html'
   paginate_by = 5
 
+  def get_queryset(self):
+    qs = super(PlaceListView, self).get_queryset().order_by('-rating')
+    return qs
+
+  def get_context_data(self, **kwargs):
+    context = super(PlaceListView, self).get_context_data(**kwargs)
+    return context
+
 class PlaceDetailView(DetailView):
   model = Place
   template_name = 'place/place_detail.html'
@@ -34,9 +42,11 @@ class PlaceDetailView(DetailView):
     place = Place.objects.get(id=self.kwargs['pk'])
     comments = Comment.objects.filter(place=place)
     context['comments'] = comments
-    rating = Comment.objects.filter(place=place).aggregate(Avg('rating'))
-    rating = Place.objects.filter(place=place).aggregate(Avg('rating'))
-    context['rating'] = rating
+    rating_comment = Comment.objects.filter(place=place).aggregate(Avg('rating'))
+    rating_place = Place.objects.filter(place=place).aggregate(Avg('rating'))
+    context['rating'] = rating_place
+    user_votes = Comment.objects.filter(vote__user=self.request.user)
+    context['user_votes'] = user_votes
     return context
 
 class PlaceUpdateView(UpdateView):
@@ -48,7 +58,7 @@ class PlaceUpdateView(UpdateView):
     object = super(PlaceUpdateView, self).get_object(*args, **kwargs)
     if object.user != self.request.user:
       raise PermissionDenied()
-      return object
+    return object
 
 class PlaceDeleteView(DeleteView):
   model = Place
@@ -59,7 +69,7 @@ class PlaceDeleteView(DeleteView):
     object = super(PlaceDeleteView, self).get_object(*args, **kwargs)
     if object.user != self.request.user:
       raise PermissionDenied()
-      return object
+    return object
 
 class CommentCreateView(CreateView):
   model = Comment
@@ -87,7 +97,7 @@ class CommentUpdateView(UpdateView):
     object = super(CommentUpdateView, self).get_object(*args, **kwargs)
     if object.user != self.request.user:
       raise PermissionDenied()
-      return object
+    return object
 
 class CommentDeleteView(DeleteView):
   model = Comment
@@ -101,7 +111,7 @@ class CommentDeleteView(DeleteView):
     object = super(CommentDeleteView, self).get_object(*args, **kwargs)
     if object.user != self.request.user:
       raise PermissionDenied()
-      return object
+    return object
 
 class VoteFormView(FormView):
   form_class = VoteForm
