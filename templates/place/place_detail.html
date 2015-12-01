@@ -61,6 +61,14 @@
   <p><a href="{% url 'comment_delete' place_pk=place.id comment_pk=comment.id %}">Delete comment</a></p>
   {% endif %}
   <p>Commented by {{ comment.user.username }} on {{ comment.created_at }}</p>
+  <p>{{ comment.vote_set.all.count }} Vote{{ comment.vote_set.all.count|pluralize }}</p>
+  <form method="post" action="{% url 'vote' %}">
+    {% csrf_token %}
+    <input type="hidden" name="comment" value="{{ comment.id }}" />
+    <input type="hidden" name="place" value="{{ place.id }}" />
+    <input type="hidden" name="user" value="{{ user.id }}" />
+    <button>+</button>
+  </form>
 </div>
 {% endfor %}
 {% if user.is_authenticated %}
