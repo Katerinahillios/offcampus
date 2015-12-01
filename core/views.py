@@ -1,3 +1,4 @@
+from django.db.models import Avg
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
@@ -32,18 +33,20 @@ class PlaceDetailView(DetailView):
     comments = Comment.objects.filter(place=place)
     context['comments'] = comments
     return context
+    rating = Comment.objects.filter(place=place).aggregate(Avg('rating'))
+    context['rating'] = rating
 
 class PlaceUpdateView(UpdateView):
   model = Place
   template_name = 'place/place_form.html'
   fields = ['category', 'place', 'description']
-  
+
   def get_object(self, *args, **kwargs):
     object = super(PlaceUpdateView, self).get_object(*args, **kwargs)
     if object.user != self.request.user:
       raise PermissionDenied()
       return object
-      
+
 class PlaceDeleteView(DeleteView):
   model = Place
   template_name = 'place/place_confirm_delete.html'
@@ -58,7 +61,7 @@ class PlaceDeleteView(DeleteView):
 class CommentCreateView(CreateView):
   model = Comment
   template_name = 'comment/comment_form.html'
-  fields = ['text']
+  fields = ['text', 'visibility', 'rating']
 
   def get_success_url(self):
     return self.object.place.get_absolute_url()
@@ -72,11 +75,11 @@ class CommentUpdateView(UpdateView):
   model = Comment
   pk_url_kwarg = 'comment_pk'
   template_name = 'comment/comment_form.html'
-  fields = ['text']
+  fields = ['text', 'visibility', 'rating']
 
   def get_success_url(self):
     return self.object.place.get_absolute_url()
-  
+
   def get_object(self, *args, **kwargs):
     object = super(CommentUpdateView, self).get_object(*args, **kwargs)
     if object.user != self.request.user:
@@ -87,7 +90,7 @@ class CommentDeleteView(DeleteView):
   model = Comment
   pk_url_kwarg = 'comment_pk'
   template_name = 'comment/comment_confirm_delete.html'
-  
+
   def get_success_url(self):
     return self.object.place.get_absolute_url()
 
@@ -96,4 +99,3 @@ class CommentDeleteView(DeleteView):
     if object.user != self.request.user:
       raise PermissionDenied()
       return object
-  
