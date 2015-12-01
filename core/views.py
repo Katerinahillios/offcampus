@@ -150,18 +150,23 @@ class UserDeleteView(DeleteView):
   model = User
   slug_field = "username"
   template_name = 'user/user_confirm_delete.html'
-  
+
   def get_success_url(self):
     return reverse_lazy('logout')
-  
+
   def get_object(self, *args, **kwargs):
     object = super(UserDeleteView, self).get_object(*args, **kwargs)
     if object != self.request.user:
       raise PermissionDenied()
     return object
-  
+
   def delete(self, request, *args, **kwargs):
     user = super(UserDeleteView, self).get_object(*args)
     user.is_active = False
     user.save()
     return redirect(self.get_success_url())
+
+class SearchPlaceListView(PlaceListView):
+  def get_queryset(self):
+    incoming_query_string = self.request.GET.get('query', '')
+    return Place.objects.filter(place__icontains=incoming_query_string)
