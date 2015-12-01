@@ -130,19 +130,38 @@ class UserDetailView(DetailView):
     comments = Comment.objects.filter(user=user_in_view)
     context['comments'] = comments
     return context
-  
+
 class UserUpdateView(UpdateView):
   model = User
   slug_field = "username"
   template_name = "user/user_form.html"
   fields = ['email', 'first_name', 'last_name']
-  
+
   def get_success_url(self):
     return reverse('user_detail', args=[self.request.user.username])
-  
+
   def get_object(self, *args, **kwargs):
     object = super(UserUpdateView, self).get_object(*args, **kwargs)
     if object != self.request.user:
       raise PermissionDenied()
-    return object 
+    return object
+
+class UserDeleteView(DeleteView):
+  model = User
+  slug_field = "username"
+  template_name = 'user/user_confirm_delete.html'
   
+  def get_success_url(self):
+    return reverse_lazy('logout')
+  
+  def get_object(self, *args, **kwargs):
+    object = super(UserDeleteView, self).get_object(*args, **kwargs)
+    if object != self.request.user:
+      raise PermissionDenied()
+    return object
+  
+  def delete(self, request, *args, **kwargs):
+    user = super(UserDeleteView, self).get_object(*args)
+    user.is_active = False
+    user.save()
+    return redirect(self.get_success_url())
