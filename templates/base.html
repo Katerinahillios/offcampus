@@ -58,10 +58,10 @@
               <a href="{% url 'home' %}">Home</a>
             </li>
             <li><a href="{% url 'place_list' %}">Places</a></li>
-            {% if user.is_authenticated %}
             <form action="{% url 'search' %}" class="navbar-form navbar-left" method="get">
               <input type="text" placeholder="Search" class="form-control" name="query">
             </form>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'place_create' %}">Add Place</a></li>
             <li><a href="{% url 'user_detail' slug=user.username %}">Profile</a></li>
             <li><a href="{% url 'auth_logout' %}">Logout</a></li>
