@@ -17,7 +17,11 @@ class PlaceCreateView(CreateView):
   success_url = reverse_lazy('place_list')
 
   def form_valid(self, form):
+    place = Place.objects.get(id=self.kwargs['pk'])
+    if Comment.objects.filter(place=place, user=self.request.user).exists():
+      raise PermissionDenied()
     form.instance.user = self.request.user
+    form.instance.place = Place.objects.get(id=self.kwargs['pk'])
     return super(PlaceCreateView, self).form_valid(form)
 
 class PlaceListView(ListView):
@@ -42,11 +46,13 @@ class PlaceDetailView(DetailView):
     place = Place.objects.get(id=self.kwargs['pk'])
     comments = Comment.objects.filter(place=place)
     context['comments'] = comments
+    user_comments = Comment.objects.filter(place=place, user=self.request.user)
+    context['user_comments'] = user_comments
+    user_votes = Comment.objects.filter(vote__user=self.request.user)
+    context['user_votes'] = user_votes
     rating_comment = Comment.objects.filter(place=place).aggregate(Avg('rating'))
     rating_place = Place.objects.filter(place=place).aggregate(Avg('rating'))
     context['rating'] = rating_place
-    user_votes = Comment.objects.filter(vote__user=self.request.user)
-    context['user_votes'] = user_votes
     return context
 
 class PlaceUpdateView(UpdateView):

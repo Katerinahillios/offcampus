@@ -79,7 +79,7 @@
 </form>
 </div>
 {% endfor %}
-{% if user.is_authenticated %}
+{% if not user_comments %}
 <p><a href="{% url 'comment_create' pk=place.id %}">Add a comment!</a></p>
 {% endif %}
 {% endblock %}
