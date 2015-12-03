@@ -13,7 +13,7 @@ class Home(TemplateView):
 class PlaceCreateView(CreateView):
   model = Place
   template_name = 'place/place_form.html'
-  fields = ['category', 'place', 'description', 'rating']
+  fields = ['category', 'place', 'description', 'rating', 'image_file']
   success_url = reverse_lazy('place_list')
 
   def form_valid(self, form):
@@ -58,7 +58,7 @@ class PlaceDetailView(DetailView):
 class PlaceUpdateView(UpdateView):
   model = Place
   template_name = 'place/place_form.html'
-  fields = ['category', 'place', 'description', 'rating']
+  fields = ['category', 'place', 'description', 'rating', 'image_file']
 
   def get_object(self, *args, **kwargs):
     object = super(PlaceUpdateView, self).get_object(*args, **kwargs)
