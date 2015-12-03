@@ -46,9 +46,9 @@ class PlaceDetailView(DetailView):
     place = Place.objects.get(id=self.kwargs['pk'])
     comments = Comment.objects.filter(place=place)
     context['comments'] = comments
-    user_comments = Comment.objects.filter(place=place, user=self.request.user)
+    user_comments = Comment.objects.filter(place=place, user=self.request.user.id)
     context['user_comments'] = user_comments
-    user_votes = Comment.objects.filter(vote__user=self.request.user)
+    user_votes = Comment.objects.filter(vote__user=self.request.user.id)
     context['user_votes'] = user_votes
     rating_comment = Comment.objects.filter(place=place).aggregate(Avg('rating'))
     rating_place = Place.objects.filter(place=place).aggregate(Avg('rating'))
