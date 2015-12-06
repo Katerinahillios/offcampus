@@ -44,8 +44,8 @@
   <span class="glyphicon glyphicon-star"></span>
   ({{ rating.rating__avg }})
 {% endif %}
-<p>{{ place.description }}</p>
-<p>{% if place.image_file %}<img src="{{ place.image_file.url }}" />{% endif %}</p>
+<div style="text-align: justify;"><p>{{ place.description }}</p></div>
+<p>{% if place.image_file %}<img src="{{ place.image_file.url }}" style="max-width: 40%; height: auto;"/>{% endif %}</p>
 <p>Submitted by <a href="{% url 'user_detail' slug=place.user.username %}">{{ place.user.username }}</a> on {{ place.created_at }}</p>
 {% if place.user == user %}
 <p><a href="{% url 'place_update' pk=place.id %}">Edit place</a></p>

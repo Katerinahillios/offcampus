@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for place in object_list %}
-<div class="panel">
+<div class="row">
+  <div class="col-md-1" style="padding-top:20px;">{% if place.image_file %}<img src="{{ place.image_file.url }}" style="max-width: 100%; height: auto;"/>{% endif %}</div>
+  <div class="col-md-11">
   <h3><a href="{{ place.get_absolute_url }}">{{ place.place }}</a></h3>
   <p>Submitted by <a href="{% url 'user_detail' slug=place.user.username %}">{{ place.user.username }}</a> on {{ place.created_at }}</p><p>{{ place.get_category_display }}</p>
-</div>
+  </div>
+
+</div><p></p>
 {% empty %}
 <p>No results found. Sorry!</p>
 {% endfor %}
 {% if is_paginated %}
+<div>
 <nav>
   <ul class="pager">
     {% if page_obj.has_previous %}
@@ -19,5 +24,6 @@
     {% endif %}
   </ul>
 </nav>
+</div>
 {% endif %}
 {% endblock %}

@@ -17,11 +17,7 @@ class PlaceCreateView(CreateView):
   success_url = reverse_lazy('place_list')
 
   def form_valid(self, form):
-    place = Place.objects.get(id=self.kwargs['pk'])
-    if Comment.objects.filter(place=place, user=self.request.user).exists():
-      raise PermissionDenied()
     form.instance.user = self.request.user
-    form.instance.place = Place.objects.get(id=self.kwargs['pk'])
     return super(PlaceCreateView, self).form_valid(form)
 
 class PlaceListView(ListView):
