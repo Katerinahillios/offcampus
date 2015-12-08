@@ -3,175 +3,207 @@
 {% block home %}
 {% if user.is_authenticated %}
 <div class="container">
-        <div class="row">
-            <div class="box">
-              <div class="address-bar">Welcome Back, {{ request.user.first_name }}!</div>
-<div class="col-lg-12 text-center">
-                    <div id="carousel-example-generic" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                        </ol>
+  <div class="row">
+    <div class="box">
+      <div class="address-bar">Welcome Back, <a href="{% url 'place_create' %}">{{ request.user.first_name }}!</a></div>
+      <div class="col-lg-12 text-center">
+        <div id="carousel-example-generic" class="carousel slide">
+          <!-- Indicators -->
+          <ol class="carousel-indicators hidden-xs">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+          </ol>
 
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="{% static "images/slide-3.jpg" %}" style="height: 500px" alt="wineflower">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="{% static "images/slide-2.jpg" %}" style="height: 500px" alt="apple">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="{% static "images/slide-1.jpg" %}" style="height: 500px" alt="winery">
-                            </div>
-                          <div class="item">
-                                <img class="img-responsive img-full" src="{% static "images/slide-4.jpg" %}" style="height: 500px" alt="sunflower">
-                            </div>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
-                    <h2 class="brand-before">
-                        <small>Wanna Go</small>
-                    </h2>
-                    <h1 class="brand-name">Off Campus?</h1>
-                    <hr class="tagline-divider">
-                    <h2>
-                        <small>Brought To You By:
-                            <strong>Katerina Hillios</strong>
-                        </small>
-                    </h2>
-                </div>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img class="img-responsive img-full" src="{% static "images/slide-3.jpg" %}" style="height: 500px" alt="wineflower">
             </div>
-        </div>
-
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Let's Come Together And Explore
-                      <strong>Off Campus</strong>
-                    </h2>
-                  <hr>
-                  <div class="col-md-4" style="text-align: center; padding-top: 60px;"><img class="img-responsive img-left" src="{% static "images/people1.png" %}" style="max-width: 90%; height: auto; vertical-align:middle;" alt=""></div>
-                  <hr class="visible-xs">
-                  <div class="col-md-8" style="text-align: justify;"><p>Do you ever get sick and tired of doing the same old things around your college town? Weekend after weekend you're stuck visiting the same bars, getting takeout from the same restaraunts, cabbin' (or freshman: shuttling) it to the same clubs... you can't possibly believe that there's nothing else around to do. Don't you want a change of plans?  </p>
-                    <p>Of course you do. Welcome to Off Campus. <i>Finally</i>, here is every college student's survival guide to exploring the exciting world beyond their university's <b><i>basicly overrated</i></b> hotspots.</p>
-                    <p>Depending on your status-quo at your school, you typically follow the crowd. <p><center><i>The following scenario is a conversation that we are much too familiar with on how we settle to make plans:</i></center></p> <center><i><p>"Where's everyone going tonight?"</p> <p>"I heard people are going to (insert basic 'Standard-Friday-Night-Bar' here)"</p> <p>"Oh, nice. Same as last week. (And every other Friday before that.) *sigh*</p></i>
-                  </div>
-              </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-5.jpg" %}" style="height: 500px" alt="apple">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-1.jpg" %}" style="height: 500px" alt="winery">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-9.jpg" %}" style="height: 500px" alt="sunflower">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-4.jpg" %}" style="height: 500px" alt="sunflower">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-8.jpg" %}" style="height: 500px" alt="sunflower">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-2.jpg" %}" style="height: 500px" alt="caskbar">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-11.jpg" %}" style="height: 500px" alt="caskbar">
+            </div>
           </div>
 
-
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Here's How This
-                        <strong>Works</strong>
-                    </h2>
-                    <hr>
-                    <p>Use as many boxes as you like, and put anything you want in them! They are great for just about anything, the sky's the limit!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>
-            </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <span class="icon-next"></span>
+          </a>
         </div>
-
+        <h2 class="brand-before">
+          <small>Wanna Go</small>
+        </h2>
+        <h1 class="brand-name">Off Campus?</h1>
+        <hr class="tagline-divider">
+        <h2>
+          <small>Brought To You By:
+            <strong><span style="color:#FF7CBC">Katerina Hillios</span></strong>
+          </small>
+        </h2>
+      </div>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <hr>
+        <h2 class="intro-text text-center">Let's Come Together And Explore
+          <strong><span style="color:#FF7CBC">Off Campus</span></strong>
+        </h2>
+        <hr>
+        <div class="col-md-4" style="text-align: center;"><img class="img-responsive img-left" src="{% static "images/people1.png" %}" style="max-width: 90%; height: auto; vertical-align:middle;" alt=""></div>
+        <hr class="visible-xs">
+        <div class="col-md-8" style="text-align: justify; padding-top: 15px;"><p>Do you ever get sick and tired of doing the same old things around your college town? Weekend after weekend you're stuck visiting the same bars, getting takeout from the same restaraunts, cabbin' (or freshman: shuttlin') it to the same clubs...you can't possibly believe that there's nothing else around to do. Don't you want a change of plans?  </p>
+          <p>Of course you do. Welcome to Off Campus. <i>Finally</i>, here is every college student's survival guide to exploring the exciting world beyond their university's <i>basically overrated</i> hotspots.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="box">
+        <div class="col-md-12">
+          <hr>
+          <h2 class="intro-text text-center">Here's How This
+            <strong><span style="color:#FF7CBC">Works</span></strong>
+          </h2>
+          <hr>
+          <p style="text-align: justify;">We too often limit ourselves to the plans we hear via word of mouth, and sometimes the selection of activities can seem unappealing -- yet we still settle for "whatever everyone else is doing." Well, it's time to spice things up! © Off Campus is an interactive online portal for students to share their favorite local spots that you too can now discover! With the help of your college community, you are now able to: <p><center>•Browze new fun <i><span style="color:#FF7CBC">fall/winter/spring festivities,</span></i></center></p> <p><center>•Crave a new <i><span style="color:#FF7CBC">bite to eat,</span></i></center></p> <p><center>•Have a change of scenery for your <i><span style="color:#FF7CBC">night out on the town,</span></i></center></p> <p><center>•Paint the town red with your girls for a classic <i><span style="color:#FF7CBC">GNO,</span></i></center></p><p><center>•Or maybe you're feeling romantic with your S/O and you're in the mood for a special <i><span style="color:#FF7CBC">date night?</span></i></center></p>
+          <p style="text-align: justify;"><i>Trust us</i>, There's always something to do Off Campus -- We're just making it easier for you to discover! In the meantime while you're busy penciling in your new exciting plans for this upcoming weekend, why don't you start browzing your friends sumbissions and see what hotspots are <a href="{% url 'place_list' %}">top rated</a> amongst your peers! Or perhaps there's somewhere you'd love to tell friends about? <a href="{% url 'place_create' %}">Share</a> your awesome Off Campus experience!</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
 {% else %}
 <div class="container">
-        <div class="row">
-            <div class="box">
-              <div class="address-bar">Hello!</div>
-                <div class="col-lg-12 text-center">
-                    <div id="carousel-example-generic" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                        </ol>
+  <div class="row">
+    <div class="box">
+      <div class="address-bar">Hello!</div>
+      <div class="col-lg-12 text-center">
+                <div id="carousel-example-generic" class="carousel slide">
+          <!-- Indicators -->
+          <ol class="carousel-indicators hidden-xs">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+          </ol>
 
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="{% static "images/slide-3.jpg" %}" style="height: 500px" alt="wineflower">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="{% static "images/slide-2.jpg" %}" style="height: 500px" alt="apple">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="{% static "images/slide-1.jpg" %}" style="height: 500px" alt="winery">
-                            </div>
-                          <div class="item">
-                                <img class="img-responsive img-full" src="{% static "images/slide-4.jpg" %}" style="height: 500px" alt="sunflower">
-                            </div>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
-                    <h2 class="brand-before">
-                        <small>Wanna Go</small>
-                    </h2>
-                    <h1 class="brand-name">Off Campus?</h1>
-                    <hr class="tagline-divider">
-                    <h2>
-                        <small>Brought To You By:
-                            <strong>Katerina Hillios</strong>
-                        </small>
-                    </h2>
-                </div>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img class="img-responsive img-full" src="{% static "images/slide-3.jpg" %}" style="height: 500px" alt="wineflower">
             </div>
-        </div>
-
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Build a website
-                        <strong>worth visiting</strong>
-                    </h2>
-                    <hr>
-                    <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt="">
-                    <hr class="visible-xs">
-                    <p>The boxes used in this template are nested inbetween a normal Bootstrap row and the start of your column layout. The boxes will be full-width boxes, so if you want to make them smaller then you will need to customize.</p>
-                    <p>A huge thanks to <a href="http://join.deathtothestockphoto.com/" target="_blank">Death to the Stock Photo</a> for allowing us to use the beautiful photos that make this template really come to life. When using this template, make sure your photos are decent. Also make sure that the file size on your photos is kept to a minumum to keep load times to a minimum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-5.jpg" %}" style="height: 500px" alt="apple">
             </div>
-        </div>
-
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Beautiful boxes
-                        <strong>to showcase your content</strong>
-                    </h2>
-                    <hr>
-                    <p>Use as many boxes as you like, and put anything you want in them! They are great for just about anything, the sky's the limit!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-1.jpg" %}" style="height: 500px" alt="winery">
             </div>
-        </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-9.jpg" %}" style="height: 500px" alt="sunflower">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-4.jpg" %}" style="height: 500px" alt="sunflower">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-8.jpg" %}" style="height: 500px" alt="sunflower">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-2.jpg" %}" style="height: 500px" alt="caskbar">
+            </div>
+            <div class="item">
+              <img class="img-responsive img-full" src="{% static "images/slide-11.jpg" %}" style="height: 500px" alt="caskbar">
+            </div>
+          </div>
 
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <span class="icon-next"></span>
+          </a>
+        </div>
+        <h2 class="brand-before">
+          <small>Wanna Go</small>
+        </h2>
+        <h1 class="brand-name">Off Campus?</h1>
+        <hr class="tagline-divider">
+        <h2>
+          <small>Brought To You By:
+            <strong><span style="color:#FF7CBC">Katerina Hillios</span></strong>
+          </small>
+        </h2>
+      </div>
     </div>
-    <!-- /.container -->
+  </div>
+
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <hr>
+        <h2 class="intro-text text-center">Let's Come Together And Explore
+          <strong><span style="color:#FF7CBC">Off Campus</span></strong>
+        </h2>
+        <hr>
+        <div class="col-md-4" style="text-align: center;"><img class="img-responsive img-left" src="{% static "images/people1.png" %}" style="max-width: 90%; height: auto; vertical-align:middle;" alt=""></div>
+        <hr class="visible-xs">
+        <div class="col-md-8" style="text-align: justify; padding-top: 15px;"><p>Do you ever get sick and tired of doing the same old things around your college town? Weekend after weekend you're stuck visiting the same bars, getting takeout from the same restaraunts, cabbin' (or freshman: shuttlin') it to the same clubs...you can't possibly believe that there's nothing else around to do. Don't you want a change of plans?  </p>
+          <p>Of course you do. Welcome to Off Campus. <i>Finally</i>, here is every college student's survival guide to exploring the exciting world beyond their university's <i>basically overrated</i> hotspots.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="box">
+        <div class="col-md-12">
+          <hr>
+          <h2 class="intro-text text-center">Here's How This
+            <strong><span style="color:#FF7CBC">Works</span></strong>
+          </h2>
+          <hr>
+          <p style="text-align: justify;">We too often limit ourselves to the plans we hear via word of mouth, and sometimes the selection of activities can seem unappealing -- yet we still settle for "whatever everyone else is doing." Well, it's time to spice things up! © Off Campus is an interactive online portal for students to share their favorite local spots that you too can now discover! With the help of your college community, you are now able to: <p><center>•Browze new fun <i><span style="color:#FF7CBC">fall/winter/spring festivities,</span></i></center></p> <p><center>•Crave a new <i><span style="color:#FF7CBC">bite to eat,</span></i></center></p> <p><center>•Have a change of scenery for your <i><span style="color:#FF7CBC">night out on the town,</span></i></center></p> <p><center>•Paint the town red with your girls for a classic <i><span style="color:#FF7CBC">GNO,</span></i></center></p><p><center>•Or maybe you're feeling romantic with your S/O and you're in the mood for a special <i><span style="color:#FF7CBC">date night?</span></i></center></p>
+          <p style="text-align: justify;"><i>Trust us</i>, There's always something to do Off Campus -- We're just making it easier for you to discover! In the meantime while you're busy penciling in your new exciting plans for this upcoming weekend, why don't you start browzing your friends sumbissions and see what hotspots are <a href="{% url 'place_list' %}">top rated</a> amongst your peers! Or perhaps there's somewhere you'd love to tell friends about? <a href="{% url 'place_create' %}">Share</a> your awesome Off Campus experience!</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<!-- /.container -->
 {% endif %}
 {% endblock %}

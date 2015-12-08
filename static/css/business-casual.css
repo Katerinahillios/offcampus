@@ -34,6 +34,7 @@ p {
 hr {
     max-width: 400px;
     border-color: #999999;
+   
 }
 
 .brand,
@@ -78,7 +79,7 @@ hr {
 }
 
 .box {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 30px 15px;
     background: #fff;
     background: rgba(255,255,255,0.9);
