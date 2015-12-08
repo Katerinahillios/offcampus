@@ -36,6 +36,7 @@ category_options = (
 class Place(models.Model):
   category = models.IntegerField(choices=category_options, default=0)
   place = models.CharField(max_length=300, default="")
+  location = models.CharField(max_length=300, default="")
   description = models.TextField(null=True, blank=True, default="")
   created_at = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User)

@@ -5,7 +5,9 @@
   <div class="col-md-6" style="padding-top:20px;">{% if place.image_file %}<img src="{{ place.image_file.url }}" style="max-width: 100%; height: auto;"/>{% endif %}</div>
   <div class="col-md-6">
   <h3><a href="{{ place.get_absolute_url }}">{{ place.place }}</a></h3>
-  <p>Submitted by <a href="{% url 'user_detail' slug=place.user.username %}">{{ place.user.username }}</a> on {{ place.created_at }}</p><p><i><span style="color:#FF7CBC">{{ place.get_category_display }}</span></i></p>
+    <h5><p>{{ place.location }}</p></h5>
+    <p>Submitted by <a href="{% url 'user_detail' slug=place.user.username %}">{{ place.user.username }}</a> on {{ place.created_at }}</p>
+    <p><i><span style="color:#FF7CBC">{{ place.get_category_display }}</span></i></p>
   </div>
 
 </div><p></p>
