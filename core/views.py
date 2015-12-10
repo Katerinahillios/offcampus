@@ -23,15 +23,10 @@ class PlaceCreateView(CreateView):
 class PlaceListView(ListView):
   model = Place
   template_name = 'place/place_list.html'
-  paginate_by = 5
-
-  def get_queryset(self):
-    qs = super(PlaceListView, self).get_queryset().order_by('-rating')
-    return qs
 
   def get_context_data(self, **kwargs):
-    context = super(PlaceListView, self).get_context_data(**kwargs)
-    return context
+     context = super(PlaceListView, self).get_context_data(**kwargs)
+     return context
 
 class PlaceDetailView(DetailView):
   model = Place
