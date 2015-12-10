@@ -179,3 +179,8 @@ class SearchPlaceListView(PlaceListView):
   def get_queryset(self):
     incoming_query_string = self.request.GET.get('query', '')
     return Place.objects.filter(place__icontains=incoming_query_string)
+
+class CategoryPlaceListView(PlaceListView):
+  def get_queryset(self):
+    incoming_query_string = self.request.GET.get('query', '')
+    return Place.objects.filter(category__icontains=incoming_query_string)
