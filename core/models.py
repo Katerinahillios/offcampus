@@ -42,6 +42,9 @@ class Place(models.Model):
   user = models.ForeignKey(User)
   rating = models.IntegerField(choices=RATING_CHOICES, default=0)
   image_file = models.ImageField(upload_to=upload_to_location, null=True, blank=True)
+  
+  class Meta:
+    ordering = ['-rating']
 
   def __unicode__(self):
     return self.place
