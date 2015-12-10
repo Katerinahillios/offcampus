@@ -23,7 +23,7 @@ class PlaceCreateView(CreateView):
 class PlaceListView(ListView):
   model = Place
   template_name = 'place/place_list.html'
-  paginate_by = 5
+
 
   def get_context_data(self, **kwargs):
      context = super(PlaceListView, self).get_context_data(**kwargs)
